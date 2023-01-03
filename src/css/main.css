@@ -7,7 +7,6 @@
 }
 
 
-
 body {
     background-color: #333333;
     color: #ffffff;
@@ -60,9 +59,9 @@ main .edit-icon:hover {
     opacity: 0.5;
 }
 
-aside form input:not([type="checkbox"]),
-aside form button,
-aside form textarea {
+form input:not([type="checkbox"]),
+form button,
+form textarea {
     width: 100%;
     padding: 15px 5%;
     font-family: 'Montserrat', sans-serif;
@@ -75,16 +74,30 @@ aside form textarea {
     font-size: 15px;
 }
 
-aside form input[type="checkbox"] {
+form input[type="checkbox"] {
     margin: 10px;
 }
 
-aside form button {
+form button {
     width: 100%;
     cursor: pointer;
     transition: transform 500ms ease;
 }
 
-aside form button:hover {
+form button:hover {
     transform: scale(1.1);
+}
+
+.user form {
+    margin-top: 20px;
+}
+
+.user form input,
+.user form textarea,
+.user form button {
+    background: #134b57;
+}
+
+.user form button:hover {
+    transform: scale(1.01);
 }

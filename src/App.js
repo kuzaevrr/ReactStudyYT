@@ -6,10 +6,10 @@ import AddUser from "./components/AddUser";
 class App extends Component {
     constructor(props) {
         super(props);
-        this.state= {
+        this.state = {
             users: [
                 {
-                    id: 1,
+                    id: 3,
                     firstname: "Ivan",
                     lastname: "Ivanov",
                     bio: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda cupiditate debitis ducimus ea excepturi fuga illo impedit in inventore laborum magnam odio pariatur provident quo quod, quos saepe sit voluptatum.',
@@ -17,7 +17,7 @@ class App extends Component {
                     isHappy: true
                 },
                 {
-                    id: 2,
+                    id: 7,
                     firstname: "Petr",
                     lastname: "Petrov",
                     bio: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda cupiditate debitis ducimus ea excepturi fuga illo impedit in inventore laborum magnam odio pariatur provident quo quod, quos saepe sit voluptatum.',
@@ -27,14 +27,16 @@ class App extends Component {
             ]
         }
         this.addUser = this.addUser.bind(this);
+        this.deleteUser = this.deleteUser.bind(this);
+        this.editUser = this.editUser.bind(this);
     }
 
     render() {
         return (
             <div>
-                <Header title= "Список пользователей" />
+                <Header title="Список пользователей"/>
                 <main>
-                    <Users users = {this.state.users}/>
+                    <Users users={this.state.users} onDelete={this.deleteUser} onEdit={this.editUser}/>
                 </main>
                 <aside>
                     <AddUser onAdd={this.addUser}/>
@@ -45,8 +47,21 @@ class App extends Component {
 
     addUser(user) {
         const id = this.state.users.length + 1;
-
         this.setState({users: [...this.state.users, {id, ...user}]});
+    }
+
+    editUser(user) {
+        let allUsers = this.state.users;
+        allUsers[allUsers.findIndex(el => el.id === user.id)] = user;
+        this.setState({users: []}, () => {
+            this.setState({users: [...allUsers]})
+        });
+    }
+
+    deleteUser(id) {
+        this.setState({
+            users: this.state.users?.filter(user => user.id !== id)
+        });
     }
 
 }

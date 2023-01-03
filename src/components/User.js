@@ -24,8 +24,9 @@ class User extends React.Component {
                         editForm: !this.state.editForm
                     })
                 }} className={'edit-icon'}/>
-                <h3>{this.user.firstname} {this.user.lastname}</h3>
-                <p>{this.user.bio}</p>
+                <h3>{this.user.first_name} {this.user.last_name}</h3>
+                <img src={this.user.avatar}  alt={"Non avatar"}/>
+                <p>{this.user.email}</p>
                 <b>{this.user.isHappy ? "Счастлив :)" : "Грустный :("}</b>
 
                 {this.state.editForm && <AddUser user={this.user} onAdd={this.props.onEdit} />}

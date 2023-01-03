@@ -19,18 +19,18 @@ class AddUser extends React.Component {
     render() {
         return (
             <form ref={(el) => this.myForm = el}>
-                <input placeholder={'Имя'} onChange={(e) => this.setState({firstname: e.target.value})}/>
-                <input placeholder={'Фамилия'} onChange={(e) => this.setState({lastname: e.target.value})}/>
-                <textarea placeholder={'Биография'} onChange={(e) => this.setState({bio: e.target.value})}/>
+                <input placeholder={'Имя'} onChange={(e) => this.setState({first_name: e.target.value})}/>
+                <input placeholder={'Фамилия'} onChange={(e) => this.setState({last_name: e.target.value})}/>
+                <textarea placeholder={'Биография'} onChange={(e) => this.setState({email: e.target.value})}/>
                 <input placeholder={'Возраст'} onChange={(e) => this.setState({age: e.target.value})}/>
                 <label htmlFor="isHappy">Счастлив?</label>
                 <input type="checkbox" id="isHappy" onChange={(e) => this.setState({isHappy: e.target.checked})}/>
                 <button type="button" onClick={() => {
                     this.myForm.reset();
                     this.userAdd = {
-                        firstname: this.state.firstname,
-                        lastname: this.state.lastname,
-                        bio: this.state.bio,
+                        first_name: this.state.first_name,
+                        last_name: this.state.last_name,
+                        email: this.state.email,
                         age: +this.state.age,
                         isHappy: this.state.isHappy
                     };
